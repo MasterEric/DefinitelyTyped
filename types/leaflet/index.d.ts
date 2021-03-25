@@ -1047,12 +1047,18 @@ export function circleMarker(latlng: LatLngExpression, options?: CircleMarkerOpt
 
 export class Circle<P = any> extends CircleMarker<P> {
     constructor(latlng: LatLngExpression, options?: CircleMarkerOptions);
-    constructor(latlng: LatLngExpression, radius: number, options?: CircleMarkerOptions); // deprecated!
+    /**
+     * @deprecated Specify the radius in the options object instead.
+     */
+    constructor(latlng: LatLngExpression, radius: number, options?: CircleMarkerOptions);
     getBounds(): LatLngBounds;
 }
 
 export function circle(latlng: LatLngExpression, options?: CircleMarkerOptions): Circle;
-export function circle(latlng: LatLngExpression, radius: number, options?: CircleMarkerOptions): Circle; // deprecated!
+/**
+ * @deprecated Specify the radius in the options object instead.
+ */
+export function circle(latlng: LatLngExpression, radius: number, options?: CircleMarkerOptions): Circle;
 
 export interface RendererOptions extends LayerOptions {
     padding?: number;
@@ -1597,10 +1603,7 @@ export interface LeafletEvent {
     type: string;
     target: any;
     sourceTarget: any;
-    propagatedFrom: any;
-    /**
-     * @deprecated The same as {@link LeafletEvent.propagatedFrom propagatedFrom}.
-     */
+    propagatedFrom?: any;
     layer: any;
 }
 
